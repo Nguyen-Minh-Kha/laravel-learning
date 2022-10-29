@@ -31,11 +31,27 @@ Route::get('profile/{name?}', function ($name = null) {
 });
 
 Route::get('articles', function () {
-    $articles = [1, 2, 3];
+    $articles = ['B', 'A', 'C'];
 
     $sort = request()->query('sort', 'desc');
 
-    dd($sort);
+    $count = request()->query('count', 5);
+
+    dump($count);
+
+    switch ($sort) {
+        case 'desc':
+            rsort($articles);
+            break;
+
+        case 'asc':
+            sort($articles);
+            break;
+
+        default:
+            # code...
+            break;
+    }
 
     foreach ($articles as $article) {
         echo '<p>' . $article . '</p>';
