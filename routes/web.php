@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Routing\Route as RoutingRoute;
+use Illuminate\Routing\Router;
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,17 +24,35 @@ Route::get('test', function (){
     return view('test.index');
 });
 
+Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastname = null){
+    
+    //return view('profile.index')-> with('firstname', $firstname)-> with ('lastname', $lastname);
+
+    //return view('profile.index')->with(compact('firstname', 'lastname'));
+
+    //return view('profile.index')->withFirstname($firstname)->withLastname($lastname);
+
+    $data = [
+        'title' => 'my title',
+        'description' => 'my description',
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+    ];
+
+    return view('profile.index',$data);
+});
+
 Route::get("test/{user}", function ($user) {
     echo 'hello ' . $user;
 });
 
-Route::get('profile/{name?}', function ($name = null) {
-    if ($name) {
-        echo 'hello ' . $name;
-    } else {
-        echo 'hello stranger';
-    }
-});
+// Route::get('profile/{name?}', function ($name = null) {
+//     if ($name) {
+//         echo 'hello ' . $name;
+//     } else {
+//         echo 'hello stranger';
+//     }
+// });
 
 Route::get('articles', function () {
     $articles = ['B', 'A', 'C'];
