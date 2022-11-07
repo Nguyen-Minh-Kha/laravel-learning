@@ -18,6 +18,10 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::get('test', function (){
+    return view('test.index');
+});
+
 Route::get("test/{user}", function ($user) {
     echo 'hello ' . $user;
 });
