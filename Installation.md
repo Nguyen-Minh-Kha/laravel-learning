@@ -40,7 +40,17 @@ export PATH="$PATH:$HOME/.composer/vendor/bin"
 composer global require laravel/installer
 ```
 
-## STEP 2 start developpement server
+## STEP 2 Set up .env and install Dependencies
+
+- Copy .env.example as .env 
+
+_install php dependencies_
+
+```
+composer i
+```
+
+## STEP 3 start developpement server
 
 _Create app key_
 
