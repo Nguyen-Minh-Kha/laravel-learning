@@ -20,9 +20,12 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('test', function (){
-    return view('test.index');
-});
+//retourner une view
+// Route::get('test', function (){
+//     return view('test.index');
+// });
+
+//passer les params URL à la view
 
 Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastname = null){
     
@@ -41,6 +44,23 @@ Route::get('profile/{firstname}/{lastname}', function($firstname = null, $lastna
 
     return view('profile.index',$data);
 });
+
+
+//passer les query string à la view 
+
+Route::get('test' ,function(){
+    $firstname = request()->query('firstname', null);
+    $lastname = request()->query('lastname', null);
+    $data = [
+        'title' => "Page de ".$firstname,
+        'description' => "Page de ".$firstname .' '. $lastname,
+        'firstname' => $firstname,
+        'lastname' => $lastname,
+    ];
+
+    return view('test.index', $data);
+});
+
 
 Route::get("test/{user}", function ($user) {
     echo 'hello ' . $user;
