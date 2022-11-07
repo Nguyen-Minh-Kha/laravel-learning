@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 //use the controller
 use App\Http\Controllers\{
-    UserController
+    UserController,ArticleController,
 };
 
 /*
@@ -31,8 +31,24 @@ Route::get('/', function () {
 |--------------------------------------------------------------------------
 */
 
+// utiliser un controller dans une route
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 
+// utiliser un controller resource
+Route::resource('articles', ArticleController::class);
+
+
+// Route::resource('articles', ArticleController::class)->only([
+//     'index', 'create', 'store', 'show'
+// ]);
+
+/*
+->only
+using this specifies by params which routes we want to ONLY use
+
+->except 
+using this specifies by params which routes we want to exclude from routes
+*/
 
 
 /*
