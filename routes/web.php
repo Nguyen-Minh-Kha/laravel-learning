@@ -40,6 +40,17 @@ Route::get('test2', function (){
     return view('test2')->with('title', 'PHP');
 });
 
+Route::get('structures', function (){
+
+    $fruits = ['apple', 'orange', 'raisin'];
+    $data = [
+        'number'=> 5,
+        'fruits' => $fruits
+    ];
+
+    return view('structures', $data);
+});
+
 /*
 |--------------------------------------------------------------------------
 | ch 6

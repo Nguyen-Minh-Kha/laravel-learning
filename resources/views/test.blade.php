@@ -10,11 +10,14 @@
     <div class="col-lg-9">
         <div class="card mt-4">
             <div class="card-body">
-                <h2 class="card-title"><a href="#"> {!! '<script>alert("ok")</script> <p style="color: red">laravel is ok</p>' !!} </a></h2>
-                <p class="card-text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed iure corrupti
-                    facilis,
+                <h2 class="card-title"><a href="#"> {{ 'laravel is ok' }} </a></h2>
+
+                <p class="card-text">
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed iure corrupti facilis,
                     voluptates a quam adipisci est labore nihil. Consequatur sed qui impedit exercitationem
-                    voluptatum rem fuga eligendi eveniet alias!</p>
+                    voluptatum rem fuga eligendi eveniet alias!
+                </p>
+
                 <span class="author"> by <a href="">Hanna</a></span>
                 <span class="time"> 1hr ago </span>
             </div>
