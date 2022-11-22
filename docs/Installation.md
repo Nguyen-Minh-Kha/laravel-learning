@@ -62,3 +62,13 @@ _Serve_
 ```
 php artisan serve
 ```
+
+_setup .env for example_
+```
+DB_CONNECTION=mysql
+DB_HOST=localhost
+DB_PORT=3306
+DB_DATABASE=blog
+DB_USERNAME=root
+DB_PASSWORD=root
+```
