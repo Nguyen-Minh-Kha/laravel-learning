@@ -18,8 +18,8 @@ php artisan make:controller <name of controller> --resource
 php artisan route:list
 ```
 ---
-## migration
 
+## migration
 ```
 php artisan migrate
 ```
@@ -34,6 +34,12 @@ ex:
 php artisan make:migration create_table_articles --create=articles
 ``` 
 
+## create a migration to add infos into an already created table
+
+```
+php artisan make:migration <name of migration> --table=<table name>
+```
+---
 ## revert last migration
 
 ```
@@ -56,3 +62,4 @@ php artisan migrate:reset
 ```
 php artisan migrate:fresh
 ```
+
