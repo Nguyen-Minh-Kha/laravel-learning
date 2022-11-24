@@ -17,3 +17,9 @@ php artisan make:controller <name of controller> --resource
 ```
 php artisan route:list
 ```
+
+## migration
+
+```
+php artisan migrate
+```
