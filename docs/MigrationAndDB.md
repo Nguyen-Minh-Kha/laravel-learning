@@ -1,4 +1,4 @@
-## Migration
+# Migration
 ```
 php artisan migrate
 ```

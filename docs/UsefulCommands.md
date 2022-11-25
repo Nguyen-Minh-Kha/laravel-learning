@@ -6,7 +6,7 @@
 
 3. [Commands for models](./Model.md)
 
-
+4. [Comands for Faker & Factories to fill tables](./FakerAndFactories.md)
 
 ---
 ## Check routes
