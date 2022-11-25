@@ -1,65 +1,21 @@
 # Some useful command line for working with laravel
 
-## Create a controller
+1. [Commands for controllers](./Controller.md)
 
-```
-php artisan make:controller <name of controller>
-```
+2. [Commands for migrations and database](./MigrationAndDB.md)
 
-## Create a ressource controller
+3. [Commands for models](./Model.md)
 
-```
-php artisan make:controller <name of controller> --resource
-```
+
+
 ---
 ## Check routes
 
 ```
 php artisan route:list
 ```
----
 
-## migration
-```
-php artisan migrate
-```
 
-## create a migration table (create a table for db)
 
-```
-php artisan make:migration <name of migration> --create=<table name>
 
-ex:
-
-php artisan make:migration create_table_articles --create=articles
-``` 
-
-## create a migration to add infos into an already created table
-
-```
-php artisan make:migration <name of migration> --table=<table name>
-```
----
-## revert last migration
-
-```
-php artisan migrate:rollback
-```
-
-## revert last x migration
-
-```
-php artisan migrate:rollback --step=x
-```
-
-## reset all migrations
-
-```
-php artisan migrate:reset
-```
-
-## refresh all migrations
-```
-php artisan migrate:fresh
-```
 
