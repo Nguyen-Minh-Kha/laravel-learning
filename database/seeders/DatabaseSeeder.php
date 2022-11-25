@@ -14,6 +14,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        User::factory(20)->create();
+        User::factory(20)
+            ->hasArticles(5) // Has Many relationships 'magic methods' for more infos check laravel doc
+            ->create();
     }
 }
