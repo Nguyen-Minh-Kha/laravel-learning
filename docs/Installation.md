@@ -66,7 +66,7 @@ php artisan serve
 _setup .env for example_
 ```
 DB_CONNECTION=mysql
-DB_HOST=localhost
+DB_HOST=127.0.0.1
 DB_PORT=3306
 DB_DATABASE=blog
 DB_USERNAME=root

@@ -1,4 +1,11 @@
 # Migration
+
+## install
+```
+php artisan migrate:install
+```
+
+## migration
 ```
 php artisan migrate
 ```
