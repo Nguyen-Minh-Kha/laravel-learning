@@ -18,3 +18,16 @@ services:
     environment:
       PMA_ARBITRARY: 1
       PMA_HOST: mysql
+
+  app:
+      build:
+        context: ./
+        dockerfile: ./docker/Dockerfile
+      restart: always
+      depends_on:
+        - mysql
+      ports:
+        - ${APP_PORT}:${APP_PORT}
+      volumes:
+        - .:/app
+      command: "php artisan serve --host=${APP_HOST} --port=${APP_PORT}"

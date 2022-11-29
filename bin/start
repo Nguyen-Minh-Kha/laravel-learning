@@ -1,0 +1,27 @@
+#!/usr/bin/env sh
+export $(grep -v '^#' .env | xargs)
+
+# Démarre l'application symfony
+
+# On démarre toutes les machines
+docker-compose up -d --build
+
+# On install les dépendances composer si il y a besoin
+docker-compose exec app composer i
+
+# On met en place la base de données
+docker-compose exec app php artisan migrate:install
+
+docker-compose exec app php artisan migrate
+
+echo "=============================="
+echo "Installation terminé !"
+echo "Vous pouvez accéder à l'application sur l'addresse :"
+echo "http://$APP_HOST:$APP_PORT"
+echo ""
+echo "Vous pouvez accéder à phpmyadmin sur l'addresse :"
+echo "http://localhost:$PHPMYADMIN_PORT"
+echo "	- Server : mysql"
+echo "	- Utilisateur : root"
+echo "	- Mot de passe : root"
+echo "=============================="
