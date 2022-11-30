@@ -35,7 +35,12 @@ Route::get('/', function () {
 */
 
 /**
-* route for register controller
+* route to control register form
+*/
+Route::post('register', [RegisterController::class, 'register'])->name('post.register');
+
+/**
+* route to get register controller
 */
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 
