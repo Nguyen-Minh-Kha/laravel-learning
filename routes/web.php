@@ -12,7 +12,8 @@ use App\Http\Controllers\{
     LoginController,
     LogoutController,
     RegisterController,
-    ForgotController
+    ForgotController,
+    ResetController
 };
 
 /*
@@ -38,6 +39,11 @@ Route::get('/', function () {
 | ch 11
 |--------------------------------------------------------------------------
 */
+
+/**
+ * reset pwd index 
+ */
+Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
 
 /**
  * forgot pwd control 
