@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 //use the controller
 use App\Http\Controllers\{
-    UserController,ArticleController,
+    UserController,ArticleController,RegisterController
 };
 
 /*
@@ -26,30 +26,47 @@ Route::get('/', function () {
 });
 
 
+
+
+/*
+|--------------------------------------------------------------------------
+| ch 11
+|--------------------------------------------------------------------------
+*/
+
+/**
+* route for register controller
+*/
+Route::get('register', [RegisterController::class, 'index'])->name('register');
+
+Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
+
+Route::resource('articles', ArticleController::class);
+
 /*
 |--------------------------------------------------------------------------
 | ch 7
 |--------------------------------------------------------------------------
 */
 
-Route::get('test', function (){
-    return view('test')->with('title', 'Laravel');
-});
+// Route::get('test', function (){
+//     return view('test')->with('title', 'Laravel');
+// });
 
-Route::get('test2', function (){
-    return view('test2')->with('title', 'PHP');
-});
+// Route::get('test2', function (){
+//     return view('test2')->with('title', 'PHP');
+// });
 
-Route::get('structures', function (){
+// Route::get('structures', function (){
 
-    $fruits = ['apple', 'orange', 'raisin'];
-    $data = [
-        'number'=> 5,
-        'fruits' => $fruits
-    ];
+//     $fruits = ['apple', 'orange', 'raisin'];
+//     $data = [
+//         'number'=> 5,
+//         'fruits' => $fruits
+//     ];
 
-    return view('structures', $data);
-});
+//     return view('structures', $data);
+// });
 
 /*
 |--------------------------------------------------------------------------
@@ -57,11 +74,11 @@ Route::get('structures', function (){
 |--------------------------------------------------------------------------
 */
 
-// utiliser un controller dans une route
-Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
+// // utiliser un controller dans une route
+// Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
 
-// utiliser un controller resource
-Route::resource('articles', ArticleController::class);
+// // utiliser un controller resource
+// Route::resource('articles', ArticleController::class);
 
 
 // Route::resource('articles', ArticleController::class)->only([
