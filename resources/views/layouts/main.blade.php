@@ -32,14 +32,21 @@
                     <li class="nav-item active">
                         <a href="{{ url('/') }}" class="nav-link">Home</a>
                     </li>
-                    @if (Auth::guest())
+                    
+                    @guest
                     <li class="nav-item">
                         <a href="{{ route('login') }}" class="nav-link">login</a>
                     </li>
                     <li class="nav-item">
                         <a href="{{ route('register') }}" class="nav-link">Register</a>
                     </li>
-                    @endif
+                    @endguest
+                        
+                    @auth
+                    <li class="nav-item">
+                        <a href="{{ route('register') }}" class="nav-link">Sign out</a>
+                    </li>
+                    @endauth
                     
                 </ul>
             </div>
