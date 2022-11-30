@@ -11,7 +11,8 @@ use App\Http\Controllers\{
     ArticleController,
     LoginController,
     LogoutController,
-    RegisterController
+    RegisterController,
+    ForgotController
 };
 
 /*
@@ -37,6 +38,16 @@ Route::get('/', function () {
 | ch 11
 |--------------------------------------------------------------------------
 */
+
+/**
+ * forgot pwd control 
+ */
+Route::post('forgot', [ForgotController::class, 'store'])->name('post.forgot');
+
+/**
+ * forgot pwd index 
+ */
+Route::get('forgot', [ForgotController::class, 'index'])->name('forgot');
 
 /**
  * logout route 

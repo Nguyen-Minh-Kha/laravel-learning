@@ -20,10 +20,10 @@
             <!-- Card -->
             <div class="card card-outline-secondary my-4">
                 <div class="card-header">
-                    Connection
+                    Forgot my password
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('post.login') }}" method="POST">
+                    <form action="{{ route('post.forgot') }}" method="POST">
 
                         @csrf
 
@@ -35,20 +35,7 @@
                             @enderror
                         </div>
 
-                        <div class="mb-3">
-                            <label for="password" class="form-label">Password</label>
-                            <input type="password" name="password" class="form-control">
-                            @error('password')
-                                <div class="error">{{ $message }}</div>
-                            @enderror
-                        </div>
-
-                        <div class="mb-3 form-check">
-                      <input type="checkbox" class="form-check-input" id="remember" name="remember" value="1">
-                      <label class="form-check-label" for="remember">remember me</label>
-                    </div>
-                    
-                        <button type="submit" class="btn btn-primary">Connection</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
                     </form>
                     <div> <a href="{{ route('register') }}">I don't have an account</a></div>
                     <div> <a href="{{ route('forgot') }}">I forgot my password</a></div>

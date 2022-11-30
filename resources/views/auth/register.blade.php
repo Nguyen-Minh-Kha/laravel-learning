@@ -54,6 +54,7 @@
                     
                         <button type="submit" class="btn btn-primary">Register</button>
                     </form>
+                    <div><a href="{{ route('login') }}">I already have an account</a></div>
                 </div>
             </div>
             <!-- Card -->
