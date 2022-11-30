@@ -7,7 +7,11 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 //use the controller
 use App\Http\Controllers\{
-    UserController,ArticleController, LoginController, RegisterController
+    UserController,
+    ArticleController,
+    LoginController,
+    LogoutController,
+    RegisterController
 };
 
 /*
@@ -35,23 +39,28 @@ Route::get('/', function () {
 */
 
 /**
-* login control
-*/
+ * logout route 
+ */
+Route::get('logout', [LogoutController::class, 'logout'])->name('logout');
+
+/**
+ * login control
+ */
 Route::post('login', [LoginController::class, 'login'])->name('post.login');
 
 /**
-* loging index
-*/
+ * loging index
+ */
 Route::get('login', [LoginController::class, 'index'])->name('login');
 
 /**
-* route to control register form
-*/
+ * route to control register form
+ */
 Route::post('register', [RegisterController::class, 'register'])->name('post.register');
 
 /**
-* route to get register controller
-*/
+ * route to get register controller
+ */
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 
 Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
