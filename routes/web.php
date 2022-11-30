@@ -7,7 +7,7 @@ use Symfony\Component\Routing\Annotation\Route as AnnotationRoute;
 
 //use the controller
 use App\Http\Controllers\{
-    UserController,ArticleController,RegisterController
+    UserController,ArticleController, LoginController, RegisterController
 };
 
 /*
@@ -33,6 +33,16 @@ Route::get('/', function () {
 | ch 11
 |--------------------------------------------------------------------------
 */
+
+/**
+* login control
+*/
+Route::post('login', [LoginController::class, 'login'])->name('post.login');
+
+/**
+* loging index
+*/
+Route::get('login', [LoginController::class, 'index'])->name('login');
 
 /**
 * route to control register form

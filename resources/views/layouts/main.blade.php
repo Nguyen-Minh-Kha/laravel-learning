@@ -30,14 +30,17 @@
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav ml-auto">
                     <li class="nav-item active">
-                        <a href="#" class="nav-link">Home</a>
+                        <a href="{{ url('/') }}" class="nav-link">Home</a>
+                    </li>
+                    @if (Auth::guest())
+                    <li class="nav-item">
+                        <a href="{{ route('login') }}" class="nav-link">login</a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">login</a>
+                        <a href="{{ route('register') }}" class="nav-link">Register</a>
                     </li>
-                    <li class="nav-item">
-                        <a href="#" class="nav-link">Signup</a>
-                    </li>
+                    @endif
+                    
                 </ul>
             </div>
         </div>
