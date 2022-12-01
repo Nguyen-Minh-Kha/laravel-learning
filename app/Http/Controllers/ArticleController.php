@@ -86,7 +86,7 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
 
-        request()->validate(
+        $article = Auth::user()->articles()->create(request()->validate(
             [
                 'title' => ['required', 'max:20', 'unique:articles,title,'],
                 'content' => ['required'],
@@ -97,17 +97,31 @@ class ArticleController extends Controller
             //     'title.max' => 'trop long',
             //     'content.required' => 'requis',
             // ]
-        );
+        ));
 
-        $article = new Article();
-
-        $article->user_id = Auth::id(); // get current user id
-        $article->category_id = request('category');
-        $article->title = request('title');
-        $article->slug = Str::slug($article->title);
-        $article->content = request('content');
+        $article->category_id = request('category', null);
 
         $article->save();
+
+
+        // demo fillable
+        // $article = Article::create(
+        //     [
+        //         'user_id' => Auth::id(),
+        //         'title' => request('title'),
+        //         'slug' => Str::slug(request('title')),
+        //         'content' => request('content'),
+        //         'category_id' => request('category, null')
+        //     ]
+        // );
+
+        // $article = new Article();
+        // $article->user_id = Auth::id(); // get current user id
+        // $article->category_id = request('category', null);
+        // $article->title = request('title');
+        // $article->slug = Str::slug($article->title);
+        // $article->content = request('content');
+        // $article->save();
 
         $success = 'article created successfully';
 
