@@ -35,7 +35,20 @@
                             <label for="content" class="form-label">Content</label>
                             <textarea class="form-control" name="content" cols="30" rows="5" placeholder="Article content"
                                 value={{ old('content') }}></textarea>
-                            @error('title')
+                            @error('content')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
+                        </div>
+                        <div class="form-group">
+                            <label for="category">Category</label>
+                            <select name="category" class="form-control">
+                                @foreach ($categories as $category)
+                                    <option value="{{ $category->id }}">
+                                        {{ $category->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('category')
                                 <div class="error">{{ $message }}</div>
                             @enderror
                         </div>

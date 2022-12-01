@@ -10,13 +10,13 @@ class Article extends Model
     use HasFactory;
 
     /**
-    * get route key name putting the slug in the route
-    *  
-    * @return string
-    */
+     * get route key name putting the slug in the route
+     *  
+     * @return string
+     */
     public function getRouteKeyName()
     {
-     return 'slug';
+        return 'slug';
     }
 
     /**
@@ -25,5 +25,12 @@ class Article extends Model
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class)->withDefault([
+            'name' => 'anonymous category',
+        ]);
     }
 }

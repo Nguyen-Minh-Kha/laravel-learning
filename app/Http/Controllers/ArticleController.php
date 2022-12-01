@@ -2,7 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Article;
+use App\Models\{
+    Article,
+    Category
+};
 
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -58,13 +61,18 @@ class ArticleController extends Controller
      */
     public function create()
     {
+        $categories = Category::get();
+
+        $articles = Article::all();
+
         $data = [
             'title' => $description = 'Create a new article',
             'description' => $description,
+            'categories' => $categories
 
         ];
 
-        return view('article.create',);
+        return view('article.create', $data);
     }
 
     /**
