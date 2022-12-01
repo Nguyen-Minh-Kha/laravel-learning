@@ -19,7 +19,7 @@
                     Hello {{ $user->name }} !
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('articles.store') }}" method="POST" enctype="multipart/form-data">
+                    <form action="{{ route('post.user') }}" method="POST" enctype="multipart/form-data">
 
                         @csrf
 
@@ -44,6 +44,9 @@
                         <div class="form-group">
                             <label for="avatar">Avatar</label>
                             <input type="file" name="avatar">
+                            @error('avatar')
+                                <div class="error">{{ $message }}</div>
+                            @enderror
                         </div>
 
                         <div class="mt-3">

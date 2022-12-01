@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 
 class UserController extends Controller
 {
@@ -37,5 +38,12 @@ class UserController extends Controller
      *  save user infos
      */
     public function store()
-    { }
+    {
+        $user = auth()->user();
+        request()->validate([
+            'name' => ['required', 'min:3', 'max:20', Rule::unique('users')->ignore($user)],
+            'email' => ['required', 'email', Rule::unique('users')->ignore($user)],
+            'avatar' => ['sometimes', 'nullable', 'file', 'image', 'mimes:jpg,jpeg,png,gif'],
+        ]);
+    }
 }
