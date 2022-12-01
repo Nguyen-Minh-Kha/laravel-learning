@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notification;
 
 use App\Models\Comment;
 
-class NewComment extends Notification
+class NewComment extends Notification implements ShouldQueue
 {
     use Queueable;
 
@@ -45,9 +45,12 @@ class NewComment extends Notification
     public function toMail($notifiable)
     {
         return (new MailMessage)
-            ->line('The introduction to the notification.')
-            ->action('Notification Action', url('/'))
-            ->line('Thank you for using our application!');
+            ->subject('New comment')
+            ->greeting('Hello ', $this->comment->article->user->name)
+            ->line('You have received a new comment from ' . $this->comment->user->name)
+            ->line('On the article ' . $this->comment->article->title)
+            ->action('View comment', route('articles.show', ['article' => $this->comment->article->slug]))
+            ->salutation('Thank you for using our ' . config('app.name') . ' !');
     }
 
     /**
