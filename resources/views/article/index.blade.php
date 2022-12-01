@@ -8,6 +8,9 @@
         </div>
 
         <div class="col-lg-9">
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
 
             @foreach ($articles as $article)
                 <div class="card mt-4">

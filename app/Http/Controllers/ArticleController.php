@@ -200,5 +200,11 @@ class ArticleController extends Controller
     public function destroy(Article $article)
     {
         abort_if(auth()->id() != $article->user_id, 403);
+
+        $article->delete();
+
+        $success = 'article deleted successfully';
+
+        return back()->withSuccess($success);
     }
 }
