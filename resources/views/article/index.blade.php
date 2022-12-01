@@ -12,7 +12,7 @@
             @foreach ($articles as $article)
                 <div class="card mt-4">
                     <div class="card-body">
-                        <h2 class="card-title"><a href="{{ route('articles.show', ['article' => $article->id]) }}">
+                        <h2 class="card-title"><a href="{{ route('articles.show', ['article' => $article->slug]) }}">
                                 {{ $article->title }} </a></h2>
 
                         <p class="card-text">
