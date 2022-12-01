@@ -86,11 +86,18 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
 
-        request()->validate([
-            'title' => ['required', 'max:20', 'unique:articles,title,'],
-            'content' => ['required'],
-            'category' => ['sometimes', 'nullable', 'exists:categories,id'],
-        ]);
+        request()->validate(
+            [
+                'title' => ['required', 'max:20', 'unique:articles,title,'],
+                'content' => ['required'],
+                'category' => ['sometimes', 'nullable', 'exists:categories,id'],
+            ],
+            // [
+            //     'title.required' => "ya pas de titre",
+            //     'title.max' => 'trop long',
+            //     'content.required' => 'requis',
+            // ]
+        );
 
         $article = new Article();
 
