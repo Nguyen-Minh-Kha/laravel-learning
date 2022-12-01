@@ -49,6 +49,10 @@
                         <li class="nav-item">
                             <a href="{{ route('articles.create') }}" class="nav-link">Create article</a>
                         </li>
+                        <li class="nav-item">
+                            <a href="{{ route('user.edit') }}" class="nav-link">My account</a>
+                        </li>
+
                     @endauth
 
                 </ul>
