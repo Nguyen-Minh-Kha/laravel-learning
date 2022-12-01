@@ -8,6 +8,10 @@
         </div>
 
         <div class="col-lg-9">
+
+            @if (session('success'))
+                <div class="alert alert-success">{{ session('success') }}</div>
+            @endif
             <div class="card mt-4">
                 <div class="card-body">
                     <h1 class="card-title"> {{ $article->title }} </h1>
@@ -31,12 +35,19 @@
                     Comments
                 </div>
                 <div class="card-body">
-                    {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eius iusto facere alias
-                        corporis possimus
-                        ! Modi enim perspiciatis tempore numquam excepturi doloremque illum dolores laudantium aut
-                        blanditiis? Eaque, blanditiis error!</p>
-                    <small class="text-muted"> Jean at 25/01 </small>
-                    <hr> --}}
+                    @forelse ($comments as $comment)
+                        <p>{{ $comment->content }}</p>
+                        <small class="text-muted"><a
+                                href="{{ route('user.profile', ['user' => $comment->user->id]) }}">{{ $comment->user->name }}</a>
+                            at
+                            {{ $comment->created_at->isoFormat('LLL') }}
+                        </small>
+                        <hr>
+                    @empty
+                        <p>No comments for this post</p>
+                        <hr>
+                    @endforelse
+
 
                     @auth
                         <form action="{{ route('post.comment', ['article' => $article->slug]) }}" method="POST">
