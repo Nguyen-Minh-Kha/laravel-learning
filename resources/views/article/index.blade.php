@@ -25,6 +25,11 @@
                 </div>
             @endforeach
 
+            {{-- pagination --}}
+            <div class="pagination mt-5">
+                {{ $articles->links() }}
+            </div>
+
 
         </div>
     </div>

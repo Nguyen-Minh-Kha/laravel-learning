@@ -16,7 +16,7 @@ class ArticleController extends Controller
     public function index()
     {
 
-        $articles = Article::orderBy('id')->get();
+        $articles = Article::orderBy('id')->paginate(5);
 
         $data = [
             'title' => 'Articles - ' . config('app.name'),
