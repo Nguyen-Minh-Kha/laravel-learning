@@ -8,12 +8,21 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
+
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
+
+
     /**
      * login form
      */
     public function index()
     {
-        
+
         $data = [
             'title' => 'login - ' . config('app.name'),
             'description' => 'Connect to your ' . config('app.name') . " - account"
@@ -35,7 +44,7 @@ class LoginController extends Controller
         $remember = request()->has('remember');
 
         if (Auth::attempt(['email' => request('email'), 'password' => request('password')], $remember)) {
-            
+
             return redirect('/');
         }
 

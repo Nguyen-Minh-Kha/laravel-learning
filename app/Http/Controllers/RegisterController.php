@@ -7,32 +7,37 @@ use Illuminate\Http\Request;
 
 class RegisterController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
     /**
-    * Register form
-    */
+     * Register form
+     */
     public function index()
     {
         $data = [
-            'title' => 'Register - '.config('app.name'),
-            'description' => 'Register to the website '.config('app.name'),
+            'title' => 'Register - ' . config('app.name'),
+            'description' => 'Register to the website ' . config('app.name'),
         ];
 
         return view('auth.register', $data);
     }
 
     /**
-    * register form
-    */
+     * register form
+     */
     public function register()
     {
         request()->validate([
-            'name'=>'required|min:3|max:191|unique:users',
-            'email'=>'required|email|unique:users',
-            'password'=>'required|between:9,20',
+            'name' => 'required|min:3|max:191|unique:users',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|between:9,20',
         ]);
 
         $user = new User;
-        
+
         // create user and save
         $user->name = request('name');
         $user->email = request('email');

@@ -13,6 +13,12 @@ use App\Notifications\PasswordResetNotification;
 
 class ForgotController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('guest');
+    }
+
     /**
      * index forgot pwd  
      */
