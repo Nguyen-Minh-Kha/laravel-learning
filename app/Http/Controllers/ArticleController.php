@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Models\Article;
+
 class ArticleController extends Controller
 {
     /**
@@ -13,7 +15,32 @@ class ArticleController extends Controller
      */
     public function index()
     {
-        return 'Liste des articles';
+
+        $articles = Article::orderBy('id')->get();
+
+        $data = [
+            'title' => 'Articles - ' . config('app.name'),
+            'description' => 'List of your articles - ' . config('app.name'),
+            'articles' => $articles
+        ];
+
+        return view('article.index', $data);
+
+        // $count = Article::count();
+
+        // dd($count);
+
+        //$articles = Article::orderByDesc('id')->skip(10)->take(15)->get();
+
+        // $article = Article::where('title', 'Modi et esse blanditiis atque.')->first();
+
+        // dd($article->id);
+
+        // $articles = Article::orderByDesc('id')->get();
+
+        //     foreach ($articles as $article) {
+        //         dump($article->title, $article->id);
+        //     }
     }
 
     /**
@@ -43,9 +70,9 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Article $article)
     {
-        return 'Je suis l\'article avec l\'id '.$id;
+        return 'Je suis l\'article avec l\'id ' . $article->id;
     }
 
     /**
