@@ -26,6 +26,12 @@
                         <div class="mt-2">
                             <span class="time"> Posted {{ $article->created_at->diffForHumans() }} </span>
                         </div>
+                        @if (Auth::check() && Auth::user()->id == $article->user_id)
+                            <div class="mt-2">
+                                <a href="{{ route('articles.edit', ['article' => $article->slug]) }}"
+                                    class="btn btn-info">Edit</a>
+                            </div>
+                        @endif
 
                     </div>
                 </div>

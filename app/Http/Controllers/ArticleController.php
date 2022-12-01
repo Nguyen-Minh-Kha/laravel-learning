@@ -155,12 +155,21 @@ class ArticleController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param Article article
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Article $article)
     {
-        //user authentifié, edit via un formulaire
+        abort_if(auth()->id() != $article->user_id, 403);
+
+        $data = [
+            'title' => $description = 'edit ' . $article->title . ' - ' . config('app.name'),
+            'description' => $description,
+            'article' => $article,
+            'categories' => Category::all()
+        ];
+
+        return view('article.edit', $data);
     }
 
     /**
