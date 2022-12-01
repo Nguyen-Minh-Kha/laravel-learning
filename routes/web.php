@@ -27,9 +27,10 @@ use App\Http\Controllers\{
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+/**
+ * homepage route
+ */
+Route::get('/', [ArticleController::class, 'index']);
 
 
 
@@ -87,7 +88,7 @@ Route::get('register', [RegisterController::class, 'index'])->name('register');
 
 Route::get('profile/{user}', [UserController::class, 'profile'])->name('user.profile');
 
-Route::resource('articles', ArticleController::class);
+Route::resource('articles', ArticleController::class)->except('index');
 
 /*
 |--------------------------------------------------------------------------

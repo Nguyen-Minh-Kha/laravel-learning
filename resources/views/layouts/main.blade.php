@@ -7,7 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="{{ $description ?? '' }}">
     <title>{{ $title ?? '' }}</title>
-    <!--     
+    <!--
     <Link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
     integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGN5t9UJ0Z" crossorigin="anonymous"> -->
 
@@ -32,22 +32,25 @@
                     <li class="nav-item active">
                         <a href="{{ url('/') }}" class="nav-link">Home</a>
                     </li>
-                    
+
                     @guest
-                    <li class="nav-item">
-                        <a href="{{ route('login') }}" class="nav-link">Login</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('register') }}" class="nav-link">Register</a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('login') }}" class="nav-link">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('register') }}" class="nav-link">Register</a>
+                        </li>
                     @endguest
-                        
+
                     @auth
-                    <li class="nav-item">
-                        <a href="{{ route('logout') }}" class="nav-link">Logout</a>
-                    </li>
+                        <li class="nav-item">
+                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('articles.create') }}" class="nav-link">Create article</a>
+                        </li>
                     @endauth
-                    
+
                 </ul>
             </div>
         </div>
@@ -57,7 +60,7 @@
     <div class="container">
 
         @yield('content')
-    
+
     </div>
     <!--footer-->
     <footer class="py-5 bg-dark">

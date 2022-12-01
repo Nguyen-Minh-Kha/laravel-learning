@@ -9,7 +9,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
-    
+
 
     public function __construct()
     {
@@ -58,7 +58,13 @@ class ArticleController extends Controller
      */
     public function create()
     {
-        return 'Formulaire de creation';
+        $data = [
+            'title' => $description = 'Create a new article',
+            'description' => $description,
+
+        ];
+
+        return view('article.create',);
     }
 
     /**
@@ -69,7 +75,7 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        //sauvegarde d'un nouvel article
+        dd($request);
     }
 
     /**
@@ -80,9 +86,9 @@ class ArticleController extends Controller
      */
     public function show(Article $article)
     {
-         $data = [
-            'title' => $article->title.' - ' . config('app.name'),
-            'description' => $article->title.' - '.Str::words($article->content, 10),
+        $data = [
+            'title' => $article->title . ' - ' . config('app.name'),
+            'description' => $article->title . ' - ' . Str::words($article->content, 10),
             'article' => $article
         ];
 
