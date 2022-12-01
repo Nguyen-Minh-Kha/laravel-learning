@@ -179,9 +179,16 @@ class ArticleController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(ArticleRequest $request, Article $article)
     {
-        //MAJ par user authentifié de l'article en DB
+        $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
+
+        $article = Auth::user()->articles()->updateOrcreate(['id' => $article->id], $validatedData);
+
+        $success = 'article updated successfully';
+
+        return redirect()->route('articles.edit', ['article' => $article->slug])->withSuccess($success);
     }
 
     /**
