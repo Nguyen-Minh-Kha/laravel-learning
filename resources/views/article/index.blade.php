@@ -19,8 +19,14 @@
                             {{ Str::words($article->content, 5) }}
                         </p>
 
-                        <span class="author"> by <a href="">Hanna</a></span>
-                        <span class="time"> {{ $article->created_at->diffForHumans() }} </span>
+                        <span class="author"> by <a
+                                href=" {{ route('user.profile', ['user' => $article->user->id]) }}">{{ $article->user->name }}</a>
+                            joined on the
+                            {{ $article->user->created_at->format('d/m/y') }}</span>
+                        <div class="mt-2">
+                            <span class="time"> Posted {{ $article->created_at->diffForHumans() }} </span>
+                        </div>
+
                     </div>
                 </div>
             @endforeach

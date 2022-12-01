@@ -85,7 +85,7 @@ Route::post('register', [RegisterController::class, 'register'])->name('post.reg
  */
 Route::get('register', [RegisterController::class, 'index'])->name('register');
 
-Route::get('profile/{username}', [UserController::class, 'profile'])->name('user.profile');
+Route::get('profile/{user}', [UserController::class, 'profile'])->name('user.profile');
 
 Route::resource('articles', ArticleController::class);
 
