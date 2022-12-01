@@ -1,0 +1,46 @@
+{
+"create a laravel route":{
+    "prefix": "lar",
+    "body": [
+      "/**",
+      "* $1 ",
+      "*/",
+      "Route::$2('$3', function ($4){",
+        "$0",
+      "});"
+    ],
+    "description": "Create a laravel route"
+  },
+
+  "laravel add table properties":{
+    "prefix": "lat",
+    "body": [
+      "$$table->$0;"
+    ],
+    "description": "Add properties into a table for laravel"
+  },
+
+  "php add function":{
+    "prefix": "fct",
+    "body":[
+      "/**",
+      "* $1 ",
+      "*/",
+      "${2:public} function $3($4)",
+      "{",
+      " $0",
+      "}",
+    ],
+    "description": "snippet to add a php function"
+  },
+
+  "create a laravel route with controller":{
+    "prefix": "larc",
+    "body": [
+      "/**",
+      "* $1 ",
+      "*/",
+      "Route::$2('$3', [$0::class,'$4'])->name('$5');"
+    ]
+  }
+}
