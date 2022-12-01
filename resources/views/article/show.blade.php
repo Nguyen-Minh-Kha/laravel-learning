@@ -26,27 +26,42 @@
                 </div>
             </div>
             <!-- Card -->
-            {{-- <div class="card card-outline-secondary my-4">
-            <div class="card-header">
-                comment
-            </div>
-            <div class="card-body">
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eius iusto facere alias
-                    corporis possimus
-                    ! Modi enim perspiciatis tempore numquam excepturi doloremque illum dolores laudantium aut
-                    blanditiis? Eaque, blanditiis error!</p>
-                <small class="text-muted"> Jean at 25/01 </small>
-                <hr>
+            <div class="card card-outline-secondary my-4">
+                <div class="card-header">
+                    Comments
+                </div>
+                <div class="card-body">
+                    {{-- <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas eius iusto facere alias
+                        corporis possimus
+                        ! Modi enim perspiciatis tempore numquam excepturi doloremque illum dolores laudantium aut
+                        blanditiis? Eaque, blanditiis error!</p>
+                    <small class="text-muted"> Jean at 25/01 </small>
+                    <hr> --}}
 
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Suscipit vitae deleniti error enim
-                    veniam doloremque cumque tenetur officia tempore eius voluptate,
-                    quasi repellat rerum. Blanditiis recusandae cumque dignissimos eaque vero!</p>
-                <small class="text-muted"> Paul 29/06 </small>
-                <hr>
+                    @auth
+                        <form action="{{ route('post.comment', ['article' => $article->slug]) }}" method="POST">
 
-                <a href="#" class="btn btn-success"> leave a comment</a>
+                            @csrf
+
+                            <div class="form-group">
+                                <label for="content" class="form-label">Leave a comment</label>
+                                <textarea class="form-control" name="content" cols="30" rows="5" placeholder="Your comment">{{ old('content') }}</textarea>
+                                @error('content')
+                                    <div class="error">{{ $message }}</div>
+                                @enderror
+                            </div>
+                            <div class="mt-3">
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </div>
+
+                        </form>
+                    @endauth
+
+                    @guest
+                        <a href="{{ route('login') }}" class="btn btn-success">Leave a comment</a>
+                    @endguest
+                </div>
             </div>
-        </div> --}}
             <!-- Card -->
         </div>
     </div>

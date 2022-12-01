@@ -13,8 +13,10 @@ use App\Http\Controllers\{
     LogoutController,
     RegisterController,
     ForgotController,
-    ResetController
+    ResetController,
+    CommentController
 };
+
 
 /*
 |--------------------------------------------------------------------------
@@ -32,8 +34,16 @@ use App\Http\Controllers\{
  */
 Route::get('/', [ArticleController::class, 'index']);
 
+/*
+|--------------------------------------------------------------------------
+| ch 16
+|--------------------------------------------------------------------------
+*/
 
-
+/**
+ *  
+ */
+Route::post('comment/{article}', [CommentController::class, 'store'])->name('post.comment');
 
 /*
 |--------------------------------------------------------------------------

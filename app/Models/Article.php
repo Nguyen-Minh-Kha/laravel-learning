@@ -5,6 +5,8 @@ namespace App\Models;
 use Illuminate\Support\Str;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use phpDocumentor\Reflection\Types\This;
+use PhpParser\ErrorHandler\Throwing;
 
 class Article extends Model
 {
@@ -51,5 +53,13 @@ class Article extends Model
         return $this->belongsTo(Category::class)->withDefault([
             'name' => 'anonymous category',
         ]);
+    }
+
+    /**
+     *  
+     */
+    public function comments()
+    {
+        return $this->hasMany(Comment::class);
     }
 }
