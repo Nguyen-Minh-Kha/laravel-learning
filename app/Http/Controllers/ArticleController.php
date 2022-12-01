@@ -10,6 +10,8 @@ use App\Models\{
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Facades\Auth;
+
 class ArticleController extends Controller
 {
 
@@ -83,7 +85,21 @@ class ArticleController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
+
+        $article = new Article();
+
+        $article->user_id = Auth::id(); // get current user id
+
+        $article->category_id = request('category');
+        $article->title = request('title');
+        $article->slug = Str::slug($article->title);
+        $article->content = request('content');
+
+        $article->save();
+
+        $success = 'article created successfully';
+
+        return back()->withSuccess($success);
     }
 
     /**

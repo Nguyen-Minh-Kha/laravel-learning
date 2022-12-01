@@ -25,7 +25,7 @@
 
                         <div class="mb-3">
                             <label for="title" class="form-label">Title</label>
-                            <input type="text" name="name" class="form-control" value="{{ old('title') }}">
+                            <input type="text" name="title" class="form-control" value="{{ old('title') }}">
                             @error('title')
                                 <div class="error">{{ $message }}</div>
                             @enderror
