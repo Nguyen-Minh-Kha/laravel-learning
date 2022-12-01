@@ -86,10 +86,15 @@ class ArticleController extends Controller
     public function store(Request $request)
     {
 
+        request()->validate([
+            'title' => ['required', 'max:20', 'unique:articles,title,'],
+            'content' => ['required'],
+            'category' => ['sometimes', 'nullable', 'exists:categories,id'],
+        ]);
+
         $article = new Article();
 
         $article->user_id = Auth::id(); // get current user id
-
         $article->category_id = request('category');
         $article->title = request('title');
         $article->slug = Str::slug($article->title);

@@ -43,7 +43,7 @@
                             <label for="category">Category</label>
                             <select name="category" class="form-control">
                                 @foreach ($categories as $category)
-                                    <option value="{{ $category->id }}">
+                                    <option value="{{ $category->id }}" @if (old('category') == $category->id) selected @endif>
                                         {{ $category->name }}
                                     </option>
                                 @endforeach
