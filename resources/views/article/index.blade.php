@@ -29,7 +29,15 @@
                         @if (Auth::check() && Auth::user()->id == $article->user_id)
                             <div class="mt-2">
                                 <a href="{{ route('articles.edit', ['article' => $article->slug]) }}"
-                                    class="btn btn-info">Edit</a>
+                                    class="btn btn-info">Edit</a> &nbsp;
+
+                                <form
+                                    style="display:inline"action="{{ route('articles.destroy', ['article' => $article->slug]) }}"
+                                    method="POST">
+                                    @method('DELETE')
+                                    @csrf
+                                    <button class="btn btn-danger" type="submit">x</button>
+                                </form>
                             </div>
                         @endif
 
