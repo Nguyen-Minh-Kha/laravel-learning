@@ -10,6 +10,8 @@ use App\Models\{
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 
+use App\Http\Requests\ArticleRequest;
+
 use Illuminate\Support\Facades\Auth;
 
 class ArticleController extends Controller
@@ -83,25 +85,30 @@ class ArticleController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(ArticleRequest $request)
     {
 
-        $article = Auth::user()->articles()->create(request()->validate(
-            [
-                'title' => ['required', 'max:20', 'unique:articles,title,'],
-                'content' => ['required'],
-                'category' => ['sometimes', 'nullable', 'exists:categories,id'],
-            ],
-            // [
-            //     'title.required' => "ya pas de titre",
-            //     'title.max' => 'trop long',
-            //     'content.required' => 'requis',
-            // ]
-        ));
+        $validatedData = $request->validated();
+        $validatedData['category_id'] = request('category', null);
 
-        $article->category_id = request('category', null);
+        Auth::user()->articles()->create($validatedData);
 
-        $article->save();
+
+        // demo custom error
+        // $article = Auth::user()->articles()->create(request()->validate(
+        //     [
+        //         'title' => ['required', 'max:20', 'unique:articles,title,'],
+        //         'content' => ['required'],
+        //         'category' => ['sometimes', 'nullable', 'exists:categories,id'],
+        //     ],
+        //     // [
+        //     //     'title.required' => "ya pas de titre",
+        //     //     'title.max' => 'trop long',
+        //     //     'content.required' => 'requis',
+        //     // ]
+        // ));
+        // $article->category_id = request('category', null);
+        // $article->save();
 
 
         // demo fillable

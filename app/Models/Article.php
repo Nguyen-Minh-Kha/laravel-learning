@@ -17,7 +17,7 @@ class Article extends Model
      *
      * 
      */
-    protected $guarded = ['user_id', 'category_id', 'slug'];
+    protected $guarded = ['user_id', 'slug'];
 
     /**
      * get route key name putting the slug in the route
