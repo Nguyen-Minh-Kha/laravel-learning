@@ -8,7 +8,7 @@ use App\Models\{Comment, Article};
 
 use App\Http\Requests\CommentRequest;
 
-use App\Notifications\NewComment;
+use App\Events\CommentWasCreated;
 
 class CommentController extends Controller
 {
@@ -29,8 +29,7 @@ class CommentController extends Controller
         $comment = $article->comments()->create($validatedData);
 
         if (auth()->id() != $article->user_id) {
-            $when = now()->addSeconds(10);
-            $article->user->notify((new NewComment($comment))->delay($when));
+            event(new CommentWasCreated($comment));
         }
 
         $success = "Comment added successfully";

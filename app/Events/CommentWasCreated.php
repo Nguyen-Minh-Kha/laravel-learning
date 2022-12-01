@@ -16,7 +16,7 @@ class CommentWasCreated
 {
     use Dispatchable, InteractsWithSockets, SerializesModels;
 
-    public $comment;
+    public $comment; // needs to be public
 
     /**
      * Create a new event instance.
