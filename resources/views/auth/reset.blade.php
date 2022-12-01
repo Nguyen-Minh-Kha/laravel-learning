@@ -23,7 +23,7 @@
                     Reset my password
                 </div>
                 <div class="card-body">
-                    <form action="{{ route('post.forgot') }}" method="POST">
+                    <form action="{{ route('post.reset') }}" method="POST">
 
                         @csrf
 
@@ -47,7 +47,7 @@
 
                         <div class="mb-3">
                             <label for="password" class="form-label">Confirm your Password</label>
-                            <input type="password" name="password_confirm" class="form-control">
+                            <input type="password" name="password_confirmation" class="form-control">
                         </div>
 
                         <button type="submit" class="btn btn-primary">Send</button>

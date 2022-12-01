@@ -41,6 +41,11 @@ Route::get('/', function () {
 */
 
 /**
+ * update pwd 
+ */
+Route::post('reset', [ResetController::class, 'reset'])->name('post.reset');
+
+/**
  * reset pwd index 
  */
 Route::get('reset/{token}', [ResetController::class, 'index'])->name('reset');
