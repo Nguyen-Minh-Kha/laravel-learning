@@ -51,8 +51,9 @@
 
                         @if (!empty($user->avatar->filename))
                             <div class="mb-2">
-                                <a href="{{ $user->avatar->url }}" target="_blank">
-                                    <img src="{{ $user->avatar->thumb_url }}" width="200" height="200">
+                                <a href="{{ parse_url($user->avatar->url, PHP_URL_PATH) }}" target="_blank">
+                                    <img src="{{ parse_url($user->avatar->thumb_url, PHP_URL_PATH) }}" width="200"
+                                        height="200">
                                 </a>
                             </div>
                         @endif
