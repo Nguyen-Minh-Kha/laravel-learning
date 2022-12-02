@@ -148,5 +148,15 @@ class UserController extends Controller
      *  delete the user from the database
      */
     public function destroy(User $user)
-    { }
+    {
+        abort_if($user->id != auth()->id(), 403);
+
+        Storage::deleteDirectory('avatars/' . $user->id);
+
+        $user->delete();
+
+        $success = 'user deleted successfully';
+
+        return redirect('/')->withSuccess($success);
+    }
 }

@@ -65,6 +65,14 @@
                     </form>
 
                     <p class="mt-5"><a href="{{ route('user.password') }}">Change my Password</a></p>
+                    <div class="text-end">
+                        <form action="{{ route('user.destroy', ['user' => $user->id]) }}" method="POST">
+                            @method('DELETE')
+                            @csrf
+                            <button type="submit" class="alert alert-danger">Delete</button>
+                        </form>
+                    </div>
+
 
                 </div>
             </div>
