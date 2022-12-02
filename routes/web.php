@@ -14,7 +14,8 @@ use App\Http\Controllers\{
     RegisterController,
     ForgotController,
     ResetController,
-    CommentController
+    CommentController,
+    CategoryController
 };
 
 
@@ -34,6 +35,16 @@ use App\Http\Controllers\{
  */
 Route::get('/', [ArticleController::class, 'index']);
 
+/*
+|--------------------------------------------------------------------------
+| ch 23
+|--------------------------------------------------------------------------
+*/
+
+/**
+ *  
+ */
+Route::get('category/{category}', [CategoryController::class, 'show'])->name('category.show');
 
 /*
 |--------------------------------------------------------------------------
