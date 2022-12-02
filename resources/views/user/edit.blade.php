@@ -49,6 +49,15 @@
                             @enderror
                         </div>
 
+                        <div class="mb-2">
+                            @if (!empty($user->avatar->filename))
+                                <a href="{{ url($user->avatar->url) }}">
+                                    <img src="{{ url($user->avatar->thumb_url) }}" width="200" height="200">
+                                </a>
+                            @endif
+                        </div>
+
+
                         <div class="mt-3">
                             <button type="submit" class="btn btn-primary">Submit</button>
                         </div>
