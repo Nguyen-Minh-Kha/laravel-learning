@@ -28,7 +28,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ms-auto">
                     <li class="nav-item active">
                         <a href="{{ url('/') }}" class="nav-link">Home</a>
                     </li>
@@ -44,14 +44,16 @@
 
                     @auth
                         <li class="nav-item">
-                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
+                            <a href="{{ route('user.edit') }}" class="nav-link">My account</a>
                         </li>
                         <li class="nav-item">
                             <a href="{{ route('articles.create') }}" class="nav-link">Create article</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('user.edit') }}" class="nav-link">My account</a>
+                            <a href="{{ route('logout') }}" class="nav-link">Logout</a>
                         </li>
+
+
 
                     @endauth
 

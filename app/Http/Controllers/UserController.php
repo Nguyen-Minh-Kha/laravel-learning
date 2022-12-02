@@ -21,7 +21,15 @@ class UserController extends Controller
 
     public function profile(User $user)
     {
-        return 'I am an user and my name is ' . $user->name;
+        $articles = $user->articles()->withCount('comments')->orderByDesc('comments_count')->paginate(4);
+        $data = [
+            'title' => $user->name . ' profile',
+            'description' => $user->name . 'has joined the ' . $user->created_at->isoFormat('LLL') . ' and has posted ' . $user->articles()->count() . ' articles.',
+            'user' => $user,
+            'articles' => $articles,
+        ];
+
+        return view('user.profile', $data);
     }
 
     /**
