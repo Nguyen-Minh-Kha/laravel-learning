@@ -143,4 +143,10 @@ class UserController extends Controller
 
         return back()->withSuccess($success);
     }
+
+    /**
+     *  delete the user from the database
+     */
+    public function destroy(User $user)
+    { }
 }

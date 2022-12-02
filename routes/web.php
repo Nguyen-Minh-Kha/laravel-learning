@@ -34,6 +34,18 @@ use App\Http\Controllers\{
  */
 Route::get('/', [ArticleController::class, 'index']);
 
+
+/*
+|--------------------------------------------------------------------------
+| ch 22
+|--------------------------------------------------------------------------
+*/
+
+/**
+ *  
+ */
+Route::delete('destroy/{user}', [UserController::class, 'destroy'])->name('user.destroy');
+
 /*
 |--------------------------------------------------------------------------
 | ch 20
@@ -41,14 +53,14 @@ Route::get('/', [ArticleController::class, 'index']);
 */
 
 /**
-*  
-*/
-Route::get('user/password', [UserController::class,'password'])->name('user.password');
+ *  
+ */
+Route::get('user/password', [UserController::class, 'password'])->name('user.password');
 
 /**
-*  
-*/
-Route::post('password', [UserController::class,'updatePassword'])->name('update.password');
+ *  
+ */
+Route::post('password', [UserController::class, 'updatePassword'])->name('update.password');
 
 /**
  *  
