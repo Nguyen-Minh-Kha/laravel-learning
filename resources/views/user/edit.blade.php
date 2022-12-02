@@ -49,13 +49,13 @@
                             @enderror
                         </div>
 
-                        <div class="mb-2">
-                            @if (!empty($user->avatar->filename))
-                                <a href="{{ url($user->avatar->url) }}">
-                                    <img src="{{ url($user->avatar->thumb_url) }}" width="200" height="200">
+                        @if (!empty($user->avatar->filename))
+                            <div class="mb-2">
+                                <a href="{{ $user->avatar->url }}" target="_blank">
+                                    <img src="{{ $user->avatar->thumb_url }}" width="200" height="200">
                                 </a>
-                            @endif
-                        </div>
+                            </div>
+                        @endif
 
 
                         <div class="mt-3">
