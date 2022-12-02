@@ -41,6 +41,16 @@ Route::get('/', [ArticleController::class, 'index']);
 */
 
 /**
+*  
+*/
+Route::get('user/password', [UserController::class,'password'])->name('user.password');
+
+/**
+*  
+*/
+Route::post('password', [UserController::class,'updatePassword'])->name('update.password');
+
+/**
  *  
  */
 Route::post('user/store', [UserController::class, 'store'])->name('post.user');

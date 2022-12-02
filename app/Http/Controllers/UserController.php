@@ -40,6 +40,41 @@ class UserController extends Controller
     }
 
     /**
+     *  password form
+     */
+    public function password()
+    {
+        $data = [
+            'title' => $description = 'edit my password',
+            'description' => $description,
+            'user' => $user = auth()->user(),
+        ];
+
+        return view('user.password', $data);
+    }
+
+    /**
+     *  update pwd
+     */
+    public function updatePassword()
+    {
+        request()->validate([
+            'current' => 'required|password',
+            'password' => 'required|between:9,20|confirmed',
+        ]);
+
+        $user = auth()->user();
+
+        $user->password = bcrypt(request('password'));
+
+        $user->save();
+
+        $success = 'password updated';
+
+        return back()->withSuccess($success);
+    }
+
+    /**
      *  save user infos
      */
     public function store()
